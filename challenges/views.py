@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 # Create your views here.
 
@@ -10,23 +10,22 @@ days ={
     'monday': 'this is monday in dictionary',
     'tuesday': 'this is tuesday in dictionary',
     'wednesday': 'this is wednesday in dictionary',
+    'thursday': 'this is thursday in dictionary',
     'friday': 'this is friday in dictionary',
 }
 
 
+def dynamic_days_by_number(request, day):
+    days_names = list(days.keys())
+    if day > len(days_names):
+        return HttpResponseNotFound('day does not exists')
+    redirect_day = days_names[day - 1]
+    return HttpResponseRedirect(f'/days/{redirect_day}')
+    # return HttpResponse(day)
 
 
 
 
-
-def saturday(request):
-    return HttpResponse("this is saturday")
-
-def sunday(request):
-    return HttpResponse("this is sunday")
-
-def monday(request):
-    return HttpResponse("this is monday")
 
 def dynamic_days(request, day):
     day_data = days.get(day)

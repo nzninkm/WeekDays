@@ -45,11 +45,11 @@ def dynamic_days(request, day):
     day_data = days.get(day)
     if day_data is not None:
         context = {
-            "data": day_data,
-            "day": f'selected DAY is {day}',
+            'days': days_list
         }
+       
         # DTL -> Django Template Language
-        return render(request, 'challenges/challenge.html', context)
+        return render(request, 'challenges/index.html', context)
         # response_data = render_to_string('challenges/challenges.html')
         # return HttpResponse(response_data)
     return HttpResponseNotFound('day does not exists')

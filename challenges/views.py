@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-from django.shortcuts import render_to_string
+from django.template.loader import render_to_string
+
 
 # Create your views here.
 
@@ -44,7 +45,8 @@ def dynamic_days(request, day):
     day_data = days.get(day)
     if day_data is not None:
         context = {
-            "data": day_data
+            "data": day_data,
+            "day": f'selected DAY is {day}',
         }
         # DTL -> Django Template Language
         return render(request, 'challenges/challenge.html', context)

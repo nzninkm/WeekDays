@@ -48,13 +48,13 @@ def dynamic_days_by_number(request, day):
 def dynamic_days(request, day):
     day_data = days.get(day)
     if day_data is None:
-        # response_data = render_to_string('404.html')
-        # return HttpResponseNotFound(response_data)
+        response_data = render_to_string('404.html')
+        
     context = {
-            "data": day_data,
-            "day": f'selected DAY is {day}',
-        }
-       
+         "data": day_data,
+        "day": f'selected DAY is {day}',
+    }
+        # return HttpResponseNotFound(response_data)
         # DTL -> Django Template Language
     return render(request, 'challenges/challenge.html', context)
     # response_data = render_to_string('challenges/challenges.html')

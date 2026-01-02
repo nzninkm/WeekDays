@@ -2,17 +2,17 @@
 {% load static %}
 {% block page_title %} days {% endblock %}
 
-{% block header_refrences %}
-<link rel="stylesheet" href="{% static 'challenges/challenges.css' %}">
+{% block header_references %}
+<link rel="stylesheet" href="{% static  'challenges/challenges.css' %}">
+<link rel="stylesheet" href="{% static  'challenges/includes/header.css' %}">
 {% endblock %}
 
-{% block
-content %}
-{% include "challenges/includes/header.html"|with active_page="days list" %}
+{% block content %}
+{% include "challenges/includes/header.html" with active_page="days list" %}
 <ul>
   {% for day in days %}
   <li>
-    <a href="{% url 'days-of-week' %}">{{day | title}}</a>
+    <a href="{% url 'days-of-week' day=day %}">{{day | title}}</a>
   </li>
   {% endfor %}
 </ul>

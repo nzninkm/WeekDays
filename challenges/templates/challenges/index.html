@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block page_title %} days {% endblock %}{% block
 content %}
+{% include "challenges/includes/header.html"|with active_page="days list" %}
 <ul>
   {% for day in days %}
   <li>
@@ -8,3 +9,9 @@ content %}
   {% endfor %}
 </ul>
 {% endblock %}
+
+<!-- {% block footer_references %}
+<script>
+  console.log('hello')
+</script>
+{% endblock %} -->

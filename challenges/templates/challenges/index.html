@@ -9,7 +9,7 @@
     <ul>
         {% for day in days %}
         <li>
-            <a href="/days/"> {{day | title}} </a>
+            <a href="{% url 'days-of-week' %}"> {{day | title}} </a>
         </li>
         {% endfor %}
     </ul>

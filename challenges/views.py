@@ -20,13 +20,13 @@ days ={
 
 def days_list(request):
     days_list = list(days.keys())
-    # list_items = ""
+    list_items = ""
     
-    # for day in days_list:
-    #     url_path = reverse('days-of-week', args=[day])
-    #     list_items += f'<li> <a href="{url_path}"> {day} </a> </li>'
-    # content = f'<ul> \n {list_items} \n</ul>'
-    # return HttpResponse(content)
+    for day in days_list:
+        url_path = reverse('days-of-week', args=[day])
+        list_items += f'<li> <a href="{url_path}"> {day} </a> </li>'
+    content = f'<ul> \n {list_items} \n</ul>'
+    return HttpResponse(content)
     context = {
         'days':days_list
     }
@@ -49,13 +49,13 @@ def dynamic_days(request, day):
     day_data = days.get(day)
     # if day_data is not None:
     #     day_data = "there is no data"
-        context = {
+    context = {
             "data": day_data,
-            "day": f'selected DAY is {day}'
+            "day": f'selected DAY is {day}',
         }
        
         # DTL -> Django Template Language
-        return render(request, 'challenges/challenge.html', context)
-        # response_data = render_to_string('challenges/challenges.html')
-        # return HttpResponse(response_data)
+    return render(request, 'challenges/challenge.html', context)
+    response_data = render_to_string('challenges/challenges.html')
+    return HttpResponse(response_data)
     return HttpResponseNotFound('day does not exists')

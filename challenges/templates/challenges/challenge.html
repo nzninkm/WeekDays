@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>days info</title>
-  </head>
-  <body>
-    <h1>{{ day|title }}</h1>
-    {% if data is not None %}
-    <h2>{{ data }}</h2>
-    {% else %}
-    <p>there is no data</p>
-    {% endif %}
-  </body>
-</html>
+{% extends 'base.html' %} {% block page_title %} days info {% endblock %}
+{% block content %}
+<h1>{{ day|title }}</h1>
+{% if data is not None %}
+<h2>{{ data }}</h2>
+{% else %}
+<p>there is no data</p>
+{% endif %} {% endblock %}
